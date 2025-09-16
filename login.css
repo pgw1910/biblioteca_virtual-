@@ -1,0 +1,43 @@
+body{
+    background-color:#f4f4f4 ;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.login-box{
+    background-color: white;
+    width: 340px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: grid;
+    gap: 16 px;
+
+}
+form{
+    display: grid;
+    gap: 10 px;
+}
+h2{
+    color: #333;
+    text-align: center;
+    
+}
+ .login-box form input{
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    outline: none;
+
+ }
+ .login-box form input :focus{
+  border-color: #004853;
+ }
+ input[type="submit"]{
+    background-color:#004853 ;
+    color: #f4f4f4;
+    font-size: 16px;
+ }
