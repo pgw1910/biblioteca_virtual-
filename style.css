@@ -171,3 +171,8 @@ nav a:hover {
     gap: 10px;
   }
 }
+
+footer{
+  background-color: #003366;
+  color: black;
+}
