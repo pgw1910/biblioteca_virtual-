@@ -155,7 +155,7 @@ nav a:hover {
   background: #0055aa;
 }
 
-/*Grid do acervo*/
+
 .acervo {
   max-width: 1200px;
   margin: 40px auto;
@@ -171,8 +171,21 @@ nav a:hover {
     gap: 10px;
   }
 }
-
-footer{
-  background-color: #003366;
-  color: black;
+footer {
+  background-color: darkblue; 
+  color: #ecf0f1; 
+  text-align: center; 
+  padding: 20px 10px; 
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2); 
+  margin-top: 40px;
 }
+
+footer p {
+  margin: 0;
+}
+
+footer p::before {
+  content: "📚 "; /* emoji de livro antes do texto */
+}
+
