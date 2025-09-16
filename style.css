@@ -186,6 +186,6 @@ footer p {
 }
 
 footer p::before {
-  content: "📚 "; /* emoji de livro antes do texto */
+  content: "📚 ";
 }
 
