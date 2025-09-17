@@ -1,189 +1,317 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".carousel-track");
-  const prev = document.getElementById("prev");
-  const next = document.getElementById("next");
-  if (track && prev && next) {
-    let index = 0;
-    next.addEventListener("click", () => {
-      index++;
-      if (index > 2) index = 0;
-      track.style.transform = `translateX(${-index * 220}px)`;
-    });
-    prev.addEventListener("click", () => {
-      index--;
-      if (index < 0) index = 2;
-      track.style.transform = `translateX(${-index * 220}px)`;
-    });
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
-  const barraBusca = document.getElementById("barraBusca");
-  const btnBusca = document.getElementById("btnBusca");
-  const livros = document.querySelectorAll("#listaLivros .card");
+body {
+  background: #f9f9f9;
+  color: #333;
+}
 
-  function aplicarBusca() {
-    const termo = barraBusca.value.toLowerCase().trim();
-    livros.forEach(livro => {
-      const titulo = livro.querySelector("h3").textContent.toLowerCase();
-      const autor = livro.querySelector("p").textContent.toLowerCase();
-      livro.style.display = (titulo.includes(termo) || autor.includes(termo) || termo === "")
-        ? ""
-        : "none";
-    });
-  }
+header {
+  background: #003366;
+  color: #fff;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-  if (barraBusca && btnBusca) {
-    btnBusca.addEventListener("click", aplicarBusca);
-    barraBusca.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        aplicarBusca();
-      }
-    });
-  }
-
-  const filtros = document.querySelectorAll(".filtro");
-  if (filtros.length) {
-    filtros.forEach(filtro => {
-      filtro.addEventListener("change", () => {
-        let ativos = Array.from(filtros)
-          .filter(f => f.checked)
-          .map(f => f.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
-
-        livros.forEach(livro => {
-          const autor = (livro.dataset.autor || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-          const ano = (livro.dataset.ano || "").toLowerCase();
-          if (ativos.length === 0 || ativos.includes(autor) || ativos.includes(ano)) {
-            livro.style.display = "";
-           } else {
-             livro.style.display = "none";
-           }
-
-        });
-      });
-    });
-  }
-
-  const darkToggle = document.getElementById("darkModeToggle");
-  if (darkToggle) {
-    darkToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark");
-      localStorage.setItem("ugb-dark", document.body.classList.contains("dark") ? "1" : "0");
-    });
-    if (localStorage.getItem("ugb-dark") === "1") {
-      document.body.classList.add("dark");
-    }
-  }
-});
-
-// Base de dados dos livros
-const livrosData = {
-  "crime-castigo": {
-    titulo: "Crime e Castigo",
-    autor: "Fiódor Dostoiévski",
-    ano: "1866",
-    resumo: "Um romance psicológico que explora culpa, moralidade e redenção.",
-    capa: "Crime e Castigo.webp",
-    isbn: "9788526000016"
-  },
-  "memorias-subsolo": {
-    titulo: "Memórias do Subsolo",
-    autor: "Fiódor Dostoiévski",
-    ano: "1864",
-    resumo: "Uma reflexão profunda sobre o homem e sua contradição interior.",
-    capa: "Memória do Subsolo.webp",
-    isbn: "9788526000024"
-  },
-  "o-mito-de-sisifo": {
-    titulo: "O Mito de Sísifo",
-    autor: "Albert Camus",
-    ano: "1942",
-    resumo: "Uma obra filosófica que discute o absurdo da existência e a busca de sentido.",
-    capa: "O Mito de Sísfio.jpg",
-    isbn: "9788526000035"
-  },
-  "o-silmarillion": {
-    titulo: "O Silmarillion",
-    autor: "J.R.R. Tolkien",
-    ano: "1977",
-    resumo: "Uma coletânea de mitos e lendas que estabelecem as bases do universo de O Senhor dos Anéis.",
-    capa: "O Silmarillion.jpg",
-    isbn: "9788526000046"
-  },
-  "o-senhor-dos-aneis": {
-    titulo: "O Senhor dos Anéis",
-    autor: "J.R.R. Tolkien",
-    ano: "1954",
-    resumo: "A clássica saga da Terra-média sobre a luta contra o poder do Um Anel.",
-    capa: "O Senhor dos Anéis.webp",
-    isbn: "9788526000057"
-  }    
-};
+.logo {
+  height: 55px; 
+  width: auto;
+}
 
 
-if (document.getElementById("detalhesLivro")) {
-  const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
 
-  if (livrosData[id]) {
-    const livro = livrosData[id];
-    document.getElementById("detalhesLivro").innerHTML = `
-      <div class="detalhes-card">
-        <img src="${livro.capa}" alt="${livro.titulo}">
-        <h2>${livro.titulo}</h2>
-        <p><strong>Autor:</strong> ${livro.autor}</p>
-        <p><strong>Ano:</strong> ${livro.ano}</p>
-        <p><strong>ISBN:</strong> ${livro.isbn}</p>
-        <p><strong>Resumo:</strong> ${livro.resumo}</p>
-        <button>Reservar</button>
-         <section class="avaliacao">
-      <h3>Avalie este livro:</h3>
-      <div class="rating">
-        <span data-star="5">★</span>
-        <span data-star="4">★</span>
-        <span data-star="3">★</span>
-        <span data-star="2">★</span>
-        <span data-star="1">★</span>
-      </div>
-      <p id="rating-value">Clique nas estrelas para avaliar.</p>
-    </section>
-      </div>
-    `;
-  } else {
-    document.getElementById("detalhesLivro").innerHTML = `<p>Livro não encontrado.</p>`;
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #ffcc00;
+}
+
+.carousel {
+  margin: 30px auto;
+  max-width: 1000px;
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+  width: 40px;
+  margin: 0 10px;
+  border-radius: 8px;
+}
+
+.carousel-buttons {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.carousel-buttons button {
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.livros {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: flex;
+  gap: 20px;
+  padding: 0 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.livros .card {
+  flex: 0 0 200px;
+  scroll-snap-align: start;
+}
+
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+  padding: 15px;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+}
+
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/*Acervo*/ 
+.busca {
+  max-width: 800px;
+  margin: 30px auto;
+  display: flex;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.busca input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.busca button {
+  padding: 10px 20px;
+  border: none;
+  background: #003366;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.busca button:hover {
+  background: #0055aa;
+}
+
+/*Grid do acervo*/
+.acervo {
+  max-width: 1200px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+}
+
+/*Filtros na esquerda no acervo*/
+.acervo-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.filtros {
+  width: 200px;
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.filtros h3, .filtros h4 {
+  margin-bottom: 10px;
+  color: #003366;
+}
+
+.filtros label {
+  display: block;
+  margin: 5px 0;
+}
+
+.conteudo {
+  flex: 1;
+}
+
+/*Detalhes do Livro*/
+.detalhes-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.detalhes-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.detalhes-card img {
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+/*Avaliação*/
+.avaliacao {
+  margin-top: 20px;
+  padding: 15px;
+  border-top: 1px solid #ccc;
+}
+
+.rating {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.rating span {
+  color: #ccc;
+  transition: color 0.3s;
+}
+
+.rating span:hover,
+.rating span.selected {
+  color: gold;
+}
+
+
+/*Dark mode*/
+body.dark {
+  background: #121212;
+  color: #ddd;
+}
+
+body.dark header {
+  background: #222;
+}
+
+body.dark .card {
+  background: #1e1e1e;
+  color: #ddd;
+}
+
+body.dark .filtros {
+  background: #222;
+  color: #ddd;
+}
+
+/*Login*/
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+.login-container label {
+  display: block;
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.login-container button {
+  padding: 10px 20px;
+  border: none;
+  background: #003366;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-container button:hover {
+  background: #0055aa;
+}
+
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
   }
 }
-// Login e Logout
-
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("loginForm");
-  const msg = document.getElementById("loginMsg");
-
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-
-      const matricula = document.getElementById("matricula").value.trim();
-      const senha = document.getElementById("senha").value.trim();
-
-      if (matricula === "12345" && senha === "123") {
-        localStorage.setItem("ugbLogado", "1");
-
-        setTimeout(() => {
-          window.location.href = "index.html";
-        }, 1000);
-      } else {
-        msg.textContent = "Matrícula ou senha incorretos.";
-        msg.style.color = "red";
-      }
-    });
-  }
-
-  /*Log Out*/
-  const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("ugbLogado");
-      window.location.href = "login.html";
-    });
-  }
-});
