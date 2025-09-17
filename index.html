@@ -7,17 +7,26 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+  <script>
+  if (!localStorage.getItem("ugbLogado")) {
+    window.location.href = "login.html";
+  }
+</script>
+
   <header>
-    <h1>Biblioteca UGB</h1>
+    <img src="UGB FERP Logo.png" alt="Logo UGB" class="logo">
     <nav>
-      <ul>
+      <ul> 
         <li><a href="index.html">Início</a></li>
         <li><a href="acervo.html">Acervo</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="#" id="logoutBtn">Logout</a></li>
+
       </ul>
     </nav>
   </header>
-
+<button id="darkModeToggle">🌙</button>
+  </header>
   <section class="livros">
     <div class="card">
       <img src="Crime e Castigo.webp" alt="Livro A">
@@ -33,7 +42,6 @@
       <img src="O Mito de Sísfio.jpg" alt="Livro C">
       <h3>O Mito de Sísfio</h3>
       <p>Autor: Albert Camus</p>
-      <button><a href="avaliação.html">Saiba mais</a></button>
     </div>
     <div class="card">
       <img src="O Silmarillion.jpg" alt="Livro D">
@@ -46,9 +54,6 @@
       <p>Autor: Tolkien J R R</p>
     </div>
   </section>
-  <footer>
-    <p>Feito por : Olavo , Levi e Pedro </p>
-  </footer>
 
 
   <script src="script.js"></script>
