@@ -7,50 +7,69 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <header>
-    <h1>Biblioteca UGB</h1>
+    <img src="UGB FERP Logo.png" alt="Logo UGB" class="logo">
     <nav>
       <ul>
         <li><a href="index.html">Início</a></li>
         <li><a href="acervo.html" class="ativo">Acervo</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
   </header>
+   </header>
+<button id="darkModeToggle">🌙</button>
+  </header>
 
-  <section class="busca">
-    <input type="text" placeholder="🔍 Pesquisar por título, autor ou categoria...">
-    <button>Buscar</button>
-  </section>
+  <main class="acervo-container">
+    <aside class="filtros">
+      <h3>Filtros</h3>
 
-  <section class="acervo">
-    <div class="card">
-      <img src="./imagem/Crime e Castigo.webp" alt="Crime e Castigo">
-      <h3>Crime e Castigo</h3>
-      <p>Autor: Fiódor Dostoiévski</p>
-    </div>
-    <div class="card">
-      <img src="./imagem/Memória do Subsolo.webp" alt="Memórias do Subsolo">
-      <h3>Memórias do Subsolo</h3>
-      <p>Autor: Fiódor Dostoiévski</p>
-    </div>
-    <div class="card">
-      <img src="./imagem/O Mito de Sísfio.jpg" alt="O Mito de Sísifo">
-      <h3>O Mito de Sísifo</h3>
-      <p>Autor: Albert Camus</p>
-    </div>
-    <div class="card">
-      <img src="./imagem/O Silmarillion.jpg" alt="O Silmarillion">
-      <h3>O Silmarillion</h3>
-      <p>Autor: J.R.R. Tolkien</p>
-    </div>
-    <div class="card">
-      <img src="./imagem/O Senhor dos Anéis.webp" alt="O Senhor dos Anéis">
-      <h3>O Senhor dos Anéis</h3>
-      <p>Autor: J.R.R. Tolkien</p>
-    </div>
-  </section>
+      <label><input type="checkbox" class="filtro" value="Dostoíevski"> Dostoiévski</label>
+      <label><input type="checkbox" class="filtro" value="camus"> Albert Camus</label>
+      <label><input type="checkbox" class="filtro" value="tolkien"> J.R.R. Tolkien</label>
+
+      <h4>Ano</h4>
+      <label><input type="checkbox" class="filtro" value="1800"> Século XIX</label>
+      <label><input type="checkbox" class="filtro" value="1900"> Século XX</label>
+    </aside>
+
+    <section class="conteudo">
+      <section class="busca">
+        <input type="text" id="barraBusca" placeholder="Pesquisar por título ou autor...">
+        <button id="btnBusca">Buscar</button>
+      </section>
+
+      <section class="acervo" id="listaLivros">
+        <div class="card" data-autor="Dostoiévski" data-ano="1800">
+          <img src="Crime e Castigo.webp" alt="Crime e Castigo">
+          <h3>Crime e Castigo</h3>
+          <p>Autor: Fiódor Dostoiévski</p>
+        </div>
+        <div class="card" data-autor="Dostoiévski" data-ano="1800">
+          <img src="Memória do Subsolo.webp" alt="Memórias do Subsolo">
+          <h3>Memórias do Subsolo</h3>
+          <p>Autor: Fiódor Dostoiévski</p>
+        </div>
+        <div class="card" data-autor="Camus" data-ano="1900">
+          <img src="O Mito de Sísfio.jpg" alt="O Mito de Sísifo">
+          <h3>O Mito de Sísifo</h3>
+          <p>Autor: Albert Camus</p>
+        </div>
+        <div class="card" data-autor="Tolkien" data-ano="1900">
+          <img src="O Silmarillion.jpg" alt="O Silmarillion">
+          <h3>O Silmarillion</h3>
+          <p>Autor: J.R.R. Tolkien</p>
+        </div>
+        <div class="card" data-autor="Tolkien" data-ano="1900">
+          <img src="O Senhor dos Anéis.webp" alt="O Senhor dos Anéis">
+          <h3>O Senhor dos Anéis</h3>
+          <p>Autor: J.R.R. Tolkien</p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
