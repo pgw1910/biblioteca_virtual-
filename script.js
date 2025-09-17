@@ -41,23 +41,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /*FILTROS*/
   const filtros = document.querySelectorAll(".filtro");
   if (filtros.length) {
     filtros.forEach(filtro => {
       filtro.addEventListener("change", () => {
         let ativos = Array.from(filtros)
           .filter(f => f.checked)
-          .map(f => f.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")); // remove acentos
+          .map(f => f.value.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, ""));
 
         livros.forEach(livro => {
           const autor = (livro.dataset.autor || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
           const ano = (livro.dataset.ano || "").toLowerCase();
           if (ativos.length === 0 || ativos.includes(autor) || ativos.includes(ano)) {
             livro.style.display = "";
-          } else {
-            livro.style.display = "none";
-          }
+           } else {
+             livro.style.display = "none";
+           }
+
         });
       });
     });
@@ -69,12 +69,90 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.classList.toggle("dark");
       localStorage.setItem("ugb-dark", document.body.classList.contains("dark") ? "1" : "0");
     });
-
     if (localStorage.getItem("ugb-dark") === "1") {
       document.body.classList.add("dark");
     }
   }
 });
+
+// Base de dados dos livros
+const livrosData = {
+  "crime-castigo": {
+    titulo: "Crime e Castigo",
+    autor: "Fiódor Dostoiévski",
+    ano: "1866",
+    resumo: "Um romance psicológico que explora culpa, moralidade e redenção.",
+    capa: "Crime e Castigo.webp",
+    isbn: "9788526000016"
+  },
+  "memorias-subsolo": {
+    titulo: "Memórias do Subsolo",
+    autor: "Fiódor Dostoiévski",
+    ano: "1864",
+    resumo: "Uma reflexão profunda sobre o homem e sua contradição interior.",
+    capa: "Memória do Subsolo.webp",
+    isbn: "9788526000024"
+  },
+  "o-mito-de-sisifo": {
+    titulo: "O Mito de Sísifo",
+    autor: "Albert Camus",
+    ano: "1942",
+    resumo: "Uma obra filosófica que discute o absurdo da existência e a busca de sentido.",
+    capa: "O Mito de Sísfio.jpg",
+    isbn: "9788526000035"
+  },
+  "o-silmarillion": {
+    titulo: "O Silmarillion",
+    autor: "J.R.R. Tolkien",
+    ano: "1977",
+    resumo: "Uma coletânea de mitos e lendas que estabelecem as bases do universo de O Senhor dos Anéis.",
+    capa: "O Silmarillion.jpg",
+    isbn: "9788526000046"
+  },
+  "o-senhor-dos-aneis": {
+    titulo: "O Senhor dos Anéis",
+    autor: "J.R.R. Tolkien",
+    ano: "1954",
+    resumo: "A clássica saga da Terra-média sobre a luta contra o poder do Um Anel.",
+    capa: "O Senhor dos Anéis.webp",
+    isbn: "9788526000057"
+  }    
+};
+
+
+if (document.getElementById("detalhesLivro")) {
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get("id");
+
+  if (livrosData[id]) {
+    const livro = livrosData[id];
+    document.getElementById("detalhesLivro").innerHTML = `
+      <div class="detalhes-card">
+        <img src="${livro.capa}" alt="${livro.titulo}">
+        <h2>${livro.titulo}</h2>
+        <p><strong>Autor:</strong> ${livro.autor}</p>
+        <p><strong>Ano:</strong> ${livro.ano}</p>
+        <p><strong>ISBN:</strong> ${livro.isbn}</p>
+        <p><strong>Resumo:</strong> ${livro.resumo}</p>
+        <button>Reservar</button>
+         <section class="avaliacao">
+      <h3>Avalie este livro:</h3>
+      <div class="rating">
+        <span data-star="5">★</span>
+        <span data-star="4">★</span>
+        <span data-star="3">★</span>
+        <span data-star="2">★</span>
+        <span data-star="1">★</span>
+      </div>
+      <p id="rating-value">Clique nas estrelas para avaliar.</p>
+    </section>
+      </div>
+    `;
+  } else {
+    document.getElementById("detalhesLivro").innerHTML = `<p>Livro não encontrado.</p>`;
+  }
+}
+// Login e Logout
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("loginForm");
