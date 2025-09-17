@@ -6,7 +6,7 @@
 }
 
 body {
-  background: aliceblue;
+  background: #f9f9f9;
   color: #333;
 }
 
@@ -22,9 +22,11 @@ header {
   z-index: 1000;
 }
 
-header h1 {
-  font-size: 1.2rem;
+.logo {
+  height: 55px; 
+  width: auto;
 }
+
 
 nav ul {
   list-style: none;
@@ -155,7 +157,7 @@ nav a:hover {
   background: #0055aa;
 }
 
-
+/*Grid do acervo*/
 .acervo {
   max-width: 1200px;
   margin: 40px auto;
@@ -165,34 +167,105 @@ nav a:hover {
   padding: 0 20px;
 }
 
+/*Filtros na esquerda no acervo*/
+.acervo-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+.filtros {
+  width: 200px;
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.filtros h3, .filtros h4 {
+  margin-bottom: 10px;
+  color: #003366;
+}
+
+.filtros label {
+  display: block;
+  margin: 5px 0;
+}
+
+.conteudo {
+  flex: 1;
+}
+
+/*Dark mode*/
+body.dark {
+  background: #121212;
+  color: #ddd;
+}
+
+body.dark header {
+  background: #222;
+}
+
+body.dark .card {
+  background: #1e1e1e;
+  color: #ddd;
+}
+
+body.dark .filtros {
+  background: #222;
+  color: #ddd;
+}
+
+/*Login*/
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 20px;
+  color: #003366;
+}
+
+.login-container label {
+  display: block;
+  text-align: left;
+  margin: 10px 0 5px;
+  font-weight: bold;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.login-container button {
+  padding: 10px 20px;
+  border: none;
+  background: #003366;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-container button:hover {
+  background: #0055aa;
+}
+
 @media (max-width: 600px) {
   nav ul {
     flex-direction: column;
     gap: 10px;
   }
 }
-footer {
-  background-color: darkblue; 
-  color: #ecf0f1; 
-  text-align: center; 
-  padding: 20px 10px; 
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.2); 
-  margin-top: 40px;
-}
-
-footer p {
-  margin: 0;
-}
-
-footer p::before {
-  content: "📚 ";
-}
-
-button{
-  background-color: white;
-  border-radius: 8px;
-  color: black;
-  font-size: medium;
-}
-a{}
