@@ -189,3 +189,10 @@ footer p::before {
   content: "📚 ";
 }
 
+button{
+  background-color: white;
+  border-radius: 8px;
+  color: black;
+  font-size: medium;
+}
+a{}
