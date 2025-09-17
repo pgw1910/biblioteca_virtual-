@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedRating = star.getAttribute("data-star");
             stars.forEach(s => s.classList.remove("selected"));
             star.classList.add("selected");
-            let prev = star.nextElementSibling;
+            let prev = star.previousElementSibling;
             while (prev) {
                 prev.classList.add("selected");
-                prev = prev.nextElementSibling;
+                prev = prev.previousElementSibling;
             }
             output.textContent = `Você avaliou este livro com ${selectedRating} estrela(s).`;
         });
