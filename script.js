@@ -81,7 +81,7 @@ const livrosData = {
     titulo: "Crime e Castigo",
     autor: "Fiódor Dostoiévski",
     ano: "1866",
-    resumo: "Um romance psicológico que explora culpa, moralidade e redenção.",
+    resumo: "Um jovem estudante comete um assassinato para provar uma teoria, mas é atormentado pela culpa e pela paranoia que se seguem.",
     capa: "Crime e Castigo.webp",
     isbn: "9788526000016"
   },
@@ -89,7 +89,7 @@ const livrosData = {
     titulo: "Memórias do Subsolo",
     autor: "Fiódor Dostoiévski",
     ano: "1864",
-    resumo: "Uma reflexão profunda sobre o homem e sua contradição interior.",
+    resumo: "m homem amargo e isolado da sociedade destila seus pensamentos contraditórios e ressentimentos em um monólogo que ataca as fundações do racionalismo.",
     capa: "Memória do Subsolo.webp",
     isbn: "9788526000024"
   },
@@ -97,7 +97,7 @@ const livrosData = {
     titulo: "O Mito de Sísifo",
     autor: "Albert Camus",
     ano: "1942",
-    resumo: "Uma obra filosófica que discute o absurdo da existência e a busca de sentido.",
+    resumo: "Um ensaio filosófico que explora a condição do absurdo da existência humana, usando o mito grego de Sísifo como metáfora para encontrar sentido na luta sem esperança.",
     capa: "O Mito de Sísfio.jpg",
     isbn: "9788526000035"
   },
@@ -105,7 +105,7 @@ const livrosData = {
     titulo: "O Silmarillion",
     autor: "J.R.R. Tolkien",
     ano: "1977",
-    resumo: "Uma coletânea de mitos e lendas que estabelecem as bases do universo de O Senhor dos Anéis.",
+    resumo: "A criação e a história mitológica da Terra-média, detalhando as origens do mundo, dos deuses, dos elfos e a guerra pelas joias sagradas conhecidas como Silmarils.",
     capa: "O Silmarillion.jpg",
     isbn: "9788526000046"
   },
@@ -113,7 +113,7 @@ const livrosData = {
     titulo: "O Senhor dos Anéis",
     autor: "J.R.R. Tolkien",
     ano: "1954",
-    resumo: "A clássica saga da Terra-média sobre a luta contra o poder do Um Anel.",
+    resumo: "Uma épica jornada de um pequeno hobbit para destruir um anel de poder e salvar a Terra-média da escuridão crescente do Senhor do Escuro, Sauron.",
     capa: "O Senhor dos Anéis.webp",
     isbn: "9788526000057"
   }    
@@ -187,3 +187,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
