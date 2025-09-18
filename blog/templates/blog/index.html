@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca Online UGB</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+  <script>
+  if (!localStorage.getItem("ugbLogado")) {
+    window.location.href = "{% url 'login' %}";
+    
+
+  }
+</script>
+
+  <header>
+    <img src="{% static 'imagem/logo-ugb (1).png' %}" alt="Logo UGB" class="logo">
+    <nav>
+      <ul> 
+        <li><a href="{% url 'index' %}">Início</a></li>
+        <li><a href="{% url 'acervo' %}">Acervo</a></li>
+        <li><a href="{% static '#' %}" id="logoutBtn">Logout</a></li>
+
+      </ul>
+    </nav>
+<button id="darkModeToggle">🌙</button>
+  </header>
+  <section class="livros">
+    <div class="card">
+      <img src="{% static 'imagem/Crime e Castigo.webp' %}" alt="Livro A">
+      <h3>Crime e Castigo</h3>
+      <p>Autor: Fiódor Dostoíevski</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'imagem/Memória do Subsolo.webp' %}" alt="Livro B">
+      <h3>Memória do Subsolo</h3>
+      <p>Autor: Fiódor Dostoíevski</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'imagem/O Mito de Sísfio.jpg' %}" alt="Livro C">
+      <h3>O Mito de Sísfio</h3>
+      <p>Autor: Albert Camus</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'imagem/O Silmarillion.jpg' %}" alt="Livro D">
+      <h3>O Silmarillion </h3>
+      <p>Autor: Tolkien J R R</p>
+    </div>
+    <div class="card">
+      <img src="{% static 'imagem/O Silmarillion.jpg' %}" alt="Livro E">
+      <h3>O Senhor dos Anéis</h3>
+      <p>Autor: Tolkien J R R</p>
+    </div>
+  </section>
+
+
+  <script src="{% static  'script.js' %}"></script>
+</body>
+</html>
