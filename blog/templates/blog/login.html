@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  {% load static %}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Biblioteca UGB</title>
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+  <header>
+    <img src="{% static 'imagem/logo-ugb (1).png' %}" alt="Logo UGB" class="logo">
+    <nav>
+      <ul>
+        <li><a href="{% url 'index' %}">Início</a></li>
+        <li><a href="{% url 'acervo' %}">Acervo</a></li>
+        <li><a href="{% url 'login' %}" class="ativo">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="login-container">
+    <h2>Área do Aluno</h2>
+    <form id="loginForm">
+      <label for="matricula">Matrícula:</label>
+      <input type="text" id="matricula" placeholder="Digite sua matrícula" required>
+
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" placeholder="Digite sua senha" required>
+
+      <button type="submit">Entrar</button>
+    </form>
+    <p id="loginMsg"></p>
+  </main>
+
+  <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
