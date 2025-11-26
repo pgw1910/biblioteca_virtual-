@@ -116,7 +116,23 @@ const livrosData = {
     resumo: "Uma épica jornada de um pequeno hobbit para destruir um anel de poder e salvar a Terra-média da escuridão crescente do Senhor do Escuro, Sauron.",
     capa: "O Senhor dos Anéis.webp",
     isbn: "9788526000057"
-  }    
+  },
+  "a-metamorfose": {
+    titulo: "A Metamorfose",
+    autor: "Franz Kafla",
+    ano: "1915",
+    resumo: "Gregor Samsa acorda transformado em um inseto gigante e precisa lidar com a repulsa de sua família, enquanto enfrenta a perda de sua humanidade e identidade.",
+    capa: "A Metamorfose.jpg",
+    isbn: "9788594318787"
+  },
+  "o-oceano-no-fim-do-caminho": {
+    titulo: "O Oceano no Fim do Caminho",
+    autor: "Neil Gaiman",
+    ano: "2013",
+    resumo: "Um homem revisita a infância e relembra encontros com forças fantásticas e perigos sobrenaturais, guiado pela misteriosa família Hempstock e por uma amizade inesquecível.",
+    capa: "O Oceano no Fim do Caminho.jpg",
+    isbn: "9788580573688"
+  }
 };
 
 
