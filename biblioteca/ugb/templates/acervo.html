@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Acervo - Biblioteca UGB</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
+
 <body>
   <header>
-    <img src="logo-ugb (1).png" alt="Logo UGB" class="logo">
+    <img src="{% static 'imagem/logo-ugb (1).png' %}" alt="Logo UGB" class="logo">
+    
     <nav>
       <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="acervo.html" class="ativo">Acervo</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="{% url 'index' %}">Início</a></li>
+        <li><a href="{% url 'acervo' %}" class="ativo">Acervo</a></li>
+        <li><a href="{% url 'login' %}">Login</a></li>
       </ul>
     </nav>
   </header>
-   </header>
-<button id="darkModeToggle">🌙</button>
-  </header>
+
+  <button id="darkModeToggle">🌙</button>
 
   <main class="acervo-container">
+
     <aside class="filtros">
       <h3>Filtros</h3>
 
@@ -31,56 +34,58 @@
 
       <h4>Ano</h4>
       <label><input type="checkbox" class="filtro" value="seculo-xix"> Século XIX</label>
-      <label><input type="checkbox" class="filtro" value="seculo-xx"> Século XX</label> 
+      <label><input type="checkbox" class="filtro" value="seculo-xx"> Século XX</label>
     </aside>
 
     <section class="conteudo">
+
       <section class="busca">
         <input type="text" id="barraBusca" placeholder="Pesquisar por título ou autor...">
         <button id="btnBusca">Buscar</button>
       </section>
 
       <section class="acervo" id="listaLivros">
-        <div class="card" data-autor="dostoievski" data-ano="seculo-xix" onclick="window.location.href='detalhes.html?id=crime-castigo'">
-        <img src="Crime e Castigo.webp" alt="Crime e Castigo">
-        <h3>Crime e Castigo</h3>
-        <p>Autor: Fiódor Dostoiévski</p>
+
+        <div class="card" data-autor="dostoievski" data-ano="seculo-xix"
+            onclick="window.location.href='{% url 'detalhes' %}?id=crime-castigo'">
+          <img src="{% static 'imagem/Crime e Castigo.webp' %}" alt="Crime e Castigo">
+          <h3>Crime e Castigo</h3>
+          <p>Autor: Fiódor Dostoiévski</p>
         </div>
-        <div class="card" data-autor="dostoievski" data-ano="seculo-xix" onclick="window.location.href='detalhes.html?id=memorias-subsolo'">
-          <img src="Memória do Subsolo.webp" alt="Memórias do Subsolo">
+
+        <div class="card" data-autor="dostoievski" data-ano="seculo-xix"
+            onclick="window.location.href='{% url 'detalhes' %}?id=memorias-subsolo'">
+          <img src="{% static 'imagem/Memória do Subsolo.webp' %}" alt="Memórias do Subsolo">
           <h3>Memórias do Subsolo</h3>
           <p>Autor: Fiódor Dostoiévski</p>
         </div>
-        <div class="card" data-autor="camus" data-ano="seculo-xx" onclick="window.location.href='detalhes.html?id=o-mito-de-sisifo'">
-          <img src="O Mito de Sísfio.jpg" alt="O Mito de Sísifo">
+
+        <div class="card" data-autor="camus" data-ano="seculo-xx"
+            onclick="window.location.href='{% url 'detalhes' %}?id=o-mito-de-sisifo'">
+          <img src="{% static 'imagem/O Mito de Sísfio.jpg' %}" alt="O Mito de Sísifo">
           <h3>O Mito de Sísifo</h3>
           <p>Autor: Albert Camus</p>
         </div>
-        <div class="card" data-autor="tolkien" data-ano="seculo-xx" onclick="window.location.href='detalhes.html?id=o-silmarillion'">
-          <img src="O Silmarillion.jpg" alt="O Silmarillion">
+
+        <div class="card" data-autor="tolkien" data-ano="seculo-xx"
+            onclick="window.location.href='{% url 'detalhes' %}?id=o-silmarillion'">
+          <img src="{% static 'imagem/O Silmarillion.jpg' %}" alt="O Silmarillion">
           <h3>O Silmarillion</h3>
           <p>Autor: J.R.R. Tolkien</p>
         </div>
-        <div class="card" data-autor="tolkien" data-ano="seculo-xx" onclick="window.location.href='detalhes.html?id=o-senhor-dos-aneis'">
-          <img src="O Senhor dos Anéis.webp" alt="O Senhor dos Anéis">
+
+        <div class="card" data-autor="tolkien" data-ano="seculo-xx"
+            onclick="window.location.href='{% url 'detalhes' %}?id=o-senhor-dos-aneis'">
+          <img src="{% static 'imagem/O Senhor dos Anéis.webp' %}" alt="O Senhor dos Anéis">
           <h3>O Senhor dos Anéis</h3>
           <p>Autor: J.R.R. Tolkien</p>
         </div>
-        <div class="card" data-autor="Kafla" data-ano="seculo-xx" onclick="window.location.href='detalhes.html?id=a-metamorfose'">
-          <img src="A Metamorfose.jpg" alt="A Metamorfose">
-          <h3>A Metamorfose</h3>
-          <p>Autor: Franz Kafla</p>
-        </div>
-        <div class="card" data-autor="tolkien" data-ano="seculo-xx" onclick="window.location.href='detalhes.html?id=o-oceano-no-fim-do-caminho'">
-          <img src="O Oceano no Fim do Caminho.jpg" alt="Livro G">
-          <h3>O Oceano no Fim do Caminho</h3>
-          <p>Autor: Neil Gaiman</p>
-        </div>
-        </div>
+
       </section>
     </section>
+
   </main>
 
-  <script src="script.js"></script>
+  <script src="{% static 'script.js' %}"></script>
 </body>
 </html>

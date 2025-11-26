@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+{% load static %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalhes do Livro</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
   <header>
-    <img src="logo-ugb (1).png" alt="Logo UGB" class="logo">
+    <img src="{% static './imagem/logo-ugb (1).png' %}" alt="Logo UGB" class="logo">
     <nav>
       <ul>
-        <li><a href="index.html">Início</a></li>
-        <li><a href="acervo.html">Acervo</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li><a href="{% static 'index.html' %}">Início</a></li>
+        <li><a href="{% static 'acervo.html' %}">Acervo</a></li>
+        <li><a href="{% static 'login.html' %}">Login</a></li>
       </ul>
     </nav>
   </header>
@@ -21,7 +22,7 @@
   <main id="detalhesLivro" class="detalhes-container">
   </main>
 
-  <script src="avaliacao.js"></script>
-  <script src="script.js"></script>
+  <script src="{% static 'avaliacao.js' %}"></script>
+  <script src="{% static 'script.js' %}"></script>
 </body>
 </html>
