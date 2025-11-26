@@ -29,7 +29,7 @@
 - Na página de detalhes do livro, poderá avalia-lo com 5 estrelas.
 
 
-(PARTE DO BACK END, PEDRO)
+(PARTE DO BACK END, PEDRO E LEVI. ENSINANDO A EXECUÇÃO E ETC... CASO NÃO SAIBAM, SÓ PESQUISAR COMO O README FUNCIONA.)
 
 
 
@@ -47,6 +47,7 @@
 - (****** LEVI MOSTRA O QUE FEZ*****)
 - (****** PEDRO MOSTRA O QUE FEZ*****)
 - Olavo - Alguns códigos do JavaScript do Front-end, HTML, JS
+
 
 
 
