@@ -42,6 +42,11 @@ Emprestimo e devolução de Livros
 - Olavo - Alguns códigos do JavaScript do Front-end, HTML, JS
 
 
+Mudanças da AV1 para AV2: 
+- Mais livros adicionados no carrossel da página inicial.
+- Mais livros adicionados no acervo.
+
+
 
 
 
