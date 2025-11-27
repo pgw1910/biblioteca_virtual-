@@ -74,12 +74,28 @@
           <p>Autor: J.R.R. Tolkien</p>
         </div>
 
+        <div class="card" data-autor="kafla" data-ano="seculo-xx"
+            onclick="window.location.href='{% url 'detalhes' %}?id=a-metamorfose'">
+          <img src="{% static 'A Metamorfose.jpg' %}" alt="A Metamorfose">
+          <h3>A Metamorfose</h3>
+          <p>Autor: Franz Kafla</p>
+        </div>
+        
         <div class="card" data-autor="tolkien" data-ano="seculo-xx"
             onclick="window.location.href='{% url 'detalhes' %}?id=o-senhor-dos-aneis'">
           <img src="{% static 'imagem/O Senhor dos Anéis.webp' %}" alt="O Senhor dos Anéis">
           <h3>O Senhor dos Anéis</h3>
           <p>Autor: J.R.R. Tolkien</p>
         </div>
+        
+        <div class="card" data-autor="Gaiman" data-ano="seculo-xxi"
+            onclick="window.location.href='{% url 'detalhes' %}?id=o-oceano-no-fim-do-caminho'">
+          <img src="{% static 'O Oceano no Fim do caminho.jpg' %}" alt="O Oceano no Fim do Caminho">
+          <h3>O Oceano no Fim do Caminho</h3>
+          <p>Autor:Nail Gaiman</p>
+        </div>
+
+
 
       </section>
     </section>
