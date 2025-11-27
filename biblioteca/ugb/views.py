@@ -13,7 +13,6 @@ def acervo_view(request):
 def detalhes_view(request):
     return render(request, 'detalhes.html')
 
-# 🚨 Exemplo de lógica na sua View de Empréstimo 🚨
 from django.shortcuts import get_object_or_404, redirect
 from django.contrib import messages
 
@@ -57,7 +56,7 @@ def devolver_livro(request, emprestimo_id):
 from django.contrib.auth.decorators import login_required
 
 @login_required 
-def reservar_livro(request):
+def reservar_livro(request, livro_id):
     
     usuario_logado = request.user 
     

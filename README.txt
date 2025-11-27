@@ -29,23 +29,16 @@
 - Na página de detalhes do livro, poderá avalia-lo com 5 estrelas.
 
 
-(PARTE DO BACK END, PEDRO E LEVI. ENSINANDO A EXECUÇÃO E ETC... CASO NÃO SAIBAM, SÓ PESQUISAR COMO O README FUNCIONA.)
+Parte do back end (Pedro)
 
+Criação de banco de dados com usuario cadastrado
 
-
-
-
-
-
-
-
-
-
+Emprestimo e devolução de Livros
 
 ## Desenvolvedores
 
-- (****** LEVI MOSTRA O QUE FEZ*****)
-- (****** PEDRO MOSTRA O QUE FEZ*****)
+- levi (documentação)
+- Pedro (Parte do back end)
 - Olavo - Alguns códigos do JavaScript do Front-end, HTML, JS
 
 
